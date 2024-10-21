@@ -8,6 +8,8 @@ router
   .post("/createMessage", controller.createMessageData)
   .post("/createChatRoom", controller.createChatRoomData)
   .post("/getUserByEmail", controller.getUserByEmailService)
+  .post("/getChatRoomsByUserId", controller.getChatRoomsByUserId)
+  .post("/getChats", controller.getChats)
   .post("/sendPushNotification", controller.sendPushNotification)
   .post(
     "/sendMulticastPushNotification",

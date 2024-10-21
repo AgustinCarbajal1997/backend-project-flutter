@@ -25,6 +25,19 @@ const createUserService = async (body) => {
   }
 };
 
+const getChatRoomsByUserIdService = async (body) => {
+  try {
+    const users = await FB.getChatRoomsByUserId(body);
+    return {
+      statusCode: 200,
+      status: "success",
+      users,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
 const createMessageService = async (body) => {
   try {
     const res = await FB.createMessageData(body);
@@ -52,6 +65,18 @@ const createChatRoomService = async (body) => {
 const getUserByEmailService = async (email) => {
   try {
     const res = await FB.getUserData(email);
+    return {
+      statusCode: 201,
+      status: res,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
+
+const getChatService = async (body) => {
+  try {
+    const res = await FB.getChat(body);
     return {
       statusCode: 201,
       status: res,
@@ -113,5 +138,7 @@ const service = {
   createMessageService,
   createChatRoomService,
   getUserByEmailService,
+  getChatRoomsByUserIdService,
+  getChatService,
 };
 module.exports = service;
